@@ -79,11 +79,12 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_NAME: ${{ secrets.DB_NAME }}
+          DB_HOST: ${{ secrets.DB_HOST }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          envs: WUZAPI_ADMIN_TOKEN,DB_USER,DB_PASSWORD,DB_NAME
+          envs: WUZAPI_ADMIN_TOKEN,DB_USER,DB_PASSWORD,DB_NAME,DB_HOST
           script: |
             # Pull latest image
             docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
