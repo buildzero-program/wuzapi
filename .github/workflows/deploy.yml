@@ -94,6 +94,12 @@ jobs:
 
             # Deploy stack with env vars
             export IMAGE_TAG="latest"
+            export WUZAPI_ADMIN_TOKEN="${WUZAPI_ADMIN_TOKEN}"
+            export DB_USER="${DB_USER}"
+            export DB_PASSWORD="${DB_PASSWORD}"
+            export DB_NAME="${DB_NAME}"
+            export DB_HOST="${DB_HOST}"
+
             docker stack deploy -c compose.prod.yaml wuzapi --with-registry-auth
 
             # Wait for service to be healthy
@@ -113,4 +119,4 @@ jobs:
             sleep 5
 
             # Check health endpoint
-            curl -sf https://wuzapi.buildzero.ai/health || echo "Health check pending..."
+            curl -sf https://wpp.buildzero.ai/ || echo "Health check pending..."
